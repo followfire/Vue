@@ -1,10 +1,10 @@
 <template>
   <div class="recommend-list">
-    <recommend-item v-for="item in recommendList" :key="item.m_id" :item="item"/>
+    <recommend-item-container v-for="item in recommendList" :key="item.m_id" :item="item"/>
   </div>
 </template>
 <script>
-import RecommendItem from './RecommendItem'
+import RecommendItemContainer from './RecommendItemContainer'
 export default {
   name: 'RecommendList',
   data: function () {
@@ -25,7 +25,7 @@ export default {
     .catch(err => console.log(err))
   },
   components: {
-    RecommendItem
+    RecommendItemContainer
   },
   methods: {
   }
