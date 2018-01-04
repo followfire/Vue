@@ -49,7 +49,7 @@ export default {
         initialSlide: 0,
         pagination: '.swiper-pagination',
         autoplayDisableOnInteraction: false,
-        // autoplay: 2000,
+        autoplay: 2000,
         speed: 2000,
         loop: true,
         paginationClickable: true
