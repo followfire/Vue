@@ -51,7 +51,8 @@ export default {
         autoplayDisableOnInteraction: false,
         // autoplay: 2000,
         speed: 2000,
-        loop: true
+        loop: true,
+        paginationClickable: true
       })
     }
   }
