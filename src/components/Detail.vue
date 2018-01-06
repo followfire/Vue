@@ -13,7 +13,6 @@ import MusicOwner from './MusicOwner'
 import MusicCover from './MusicCover'
 import MusicInfo from './MusicInfo'
 import MusicMore from './MusicMore'
-
 export default {
   name: 'Detail',
   data: function () {
@@ -57,7 +56,7 @@ export default {
       })
     },
     getData () {
-      fetch('http://localhost/data/get-detail.php?m_id=' + this.$route.params.mid)
+      fetch('static/data/get-detail.php?m_id=' + this.$route.params.mid)
       .then(response => response.json())
       .then(data => {
         this.data = data
@@ -70,7 +69,6 @@ export default {
 </script>
 <style scoped>
   .detail{
-    
     background: #f6f6f6;
   }
   .back-arrow{

@@ -5,7 +5,7 @@
         <div v-for="item in data" :key="item.m_id" class="swiper-slide" 
           style="width: 100%;" 
           >
-          <recommend-item :route="'/detail/'+item.m_id">
+          <recommend-item :route="'/Detail/'+item.m_id">
             <div class="swiper-content" :style="{
               backgroundImage: 
               'url('+item.m_image+')',
@@ -34,7 +34,7 @@ export default {
     }
   },
   updated: function () {
-    console.log('updated')
+    // console.log('updated')
     this.lunbo()
   },
   components: {
@@ -42,15 +42,15 @@ export default {
   },
   methods: {
     lunbo () {
-      console.log('轮播')
+      // console.log('轮播')
       this.swiper = new Swiper('.swiper', {
         spaceBetween: 0,
         grabCursor: true,
         initialSlide: 0,
         pagination: '.swiper-pagination',
         autoplayDisableOnInteraction: false,
-        autoplay: 2000,
-        speed: 2000,
+        autoplay: 5000,
+        speed: 500,
         loop: true,
         paginationClickable: true
       })

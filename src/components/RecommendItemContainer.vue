@@ -1,13 +1,15 @@
 <template>
-  <div class="recommend-item">
+  <div class="recommend-item-container">
+    <div>
       <recommend-item  :route="'/Detail/'+item.m_id">
         <img :src='item.m_image' alt="">
         <p class="mname">{{item.m_name}}</p>
       </recommend-item>
-      <p class="channel">
-          <a>{{item.m_channel}}</a>
-          频道
-      </p>
+    </div>
+    <p class="channel">
+      <a>{{item.m_channel}}</a>
+      频道
+    </p>
   </div>
 </template>
 <script>
@@ -25,16 +27,12 @@ export default {
 }
 </script>
 <style scoped>
-  .recommend-item {
-    display: inline-block;
-    width: 50%;
-    padding: 1rem 1rem 6px;
-    background: #fff;
-  }
-  img{
-    width: 100%;
-    min-height:1.6rem;
-  }
+.recommend-item-container{
+  width: 50%;
+  display: inline-block;
+  padding: 1rem 1rem 6px;
+}
+  
   p.mname{
     padding-top: 5px;
     white-space: nowrap;

@@ -16,21 +16,27 @@
     </div>
   </div>
   <div class="progress-container">
-    <div class="progress" ref='progress'></div>
+    <div class="progress" @click="changeProgress" ref='container'>
+      <div ref='progress'></div>
+    </div>
+    <h6 class="playing-time">{{currentTime}}/{{duration}}</h6>
   </div>
  </div>
 </template>
 <script>
+import utility from '../utility'
 export default {
   name: 'MusicBar',
   data: function () {
     return {
-      isPlay: true
+      isPlay: true,
+      currentTime: 0,
+      duration: 0
     }
   },
   props: ['data'],
   mounted: function () {
-    console.log(this.$props.data.m_url)
+    // console.log(this.$props.data.m_url)
     this.isPlay = true
   },
   computed: {
@@ -51,17 +57,32 @@ export default {
     },
     handlePlay: function () {
       this.isPlay = true
+      console.log('playing')
+      var audio = this.$refs.audio
+      this.duration = utility.getTime(audio.duration)
     },
     handleProgress: function () {
+      // console.log(this)
       if (this.$refs.audio) {
         let audio = this.$refs.audio
         let progress = (audio.currentTime / audio.duration).toFixed(2)
         this.$refs.progress.style.width = progress * 100 + '%'
+        this.currentTime = utility.getTime(audio.currentTime)
       }
     },
     handleEnd: function () {
       this.isPlay = false
       console.log('end')
+    },
+    changeProgress: function (e) {
+      // console.log(e)
+      var left = e.offsetX
+      var width = this.$refs.container.getBoundingClientRect().width
+      var percent = left / width
+      var audio = this.$refs.audio
+      var duration = audio.duration
+      audio.currentTime = duration * percent
+      audio.play()
     }
   }
 }
@@ -128,14 +149,27 @@ export default {
     margin:.5rem;
   }
   .progress-container{
-    height:.5rem;
-    background: #5e5e5e;
+    overflow: hidden;
   }
   .progress{
+    float: left;
+    height:.5rem;
+    width: 80%;
+    background: #5e5e5e;
+  }
+  .progress>div{
     height: 100%;
     width:0;
     background: #00ae05;
   }
+  .playing-time{
+    float: left;
+    width: 20%;
+    height: .5rem;
+    line-height: .5rem;
+    text-align: center;
+  }
+  
   @keyframes goRound {
     from{
       transform: rotate(0deg)

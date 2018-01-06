@@ -20,7 +20,7 @@ export default new Router({
       redirect: Main
     },
     {
-      path: '/detail/:mid',
+      path: '/Detail/:mid',
       name: 'Detail',
       component: Detail
     }

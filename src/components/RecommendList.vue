@@ -12,12 +12,12 @@ export default {
       recommendList: []
     }
   },
-  mounted: function () {
-    console.log('mouted')
-  },
+  // mounted: function () {
+  //   console.log('mouted')
+  // },
   created: function () {
-    console.log('created')
-    fetch('http://localhost/data/get-recommend-list.php').then((response) => response.json())
+    // console.log('created')
+    fetch('static/data/get-recommend-list.php').then((response) => response.json())
     .then(data => {
       this.recommendList = data
       // console.log(this.recommendList)

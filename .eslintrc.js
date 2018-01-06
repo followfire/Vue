@@ -21,8 +21,9 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }, 
-  'globals': { 
-   "Swiper": true
-  }  //这个地方是新加入的  全局注入 
+  }//, 
+  // 'globals': { 
+  //  "Swiper": true
+  // } 
+   //这个地方是新加入的  全局注入 
 }

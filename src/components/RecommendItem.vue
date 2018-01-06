@@ -1,26 +1,25 @@
 <template>
-    <router-link :to="route">
-      <slot></slot>
-    </router-link>
+   <div class="recommend-item">
+      <router-link :to="route">
+        <slot></slot>
+      </router-link>
+    </div>
 </template>
 <script>
 export default {
   name: 'RecommendItem',
-  props: ['route'],
-  mounted: function () {
-    console.log('item mounted')
-  }
+  props: ['route']
+  // ,
+  // mounted: function () {
+  //   console.log('item mounted')
+  // }
 }
 </script>
 <style scoped>
-  .recommend-item {
-    display: inline-block;
-    width: 100%;
-    padding: 1rem 1rem 6px;
-    background: #fff;
-  }
-  img{
-    width: 100%;
-    min-height:1.6rem;
-  }
+.recommend-item {
+  display: block;
+  width: 100%;
+  background: #fff;
+}
+
 </style>

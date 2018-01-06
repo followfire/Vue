@@ -9,7 +9,7 @@
 import HeaderTheme from './HeaderTheme'
 import Banner from './Banner'
 import Recommend from './Recommend'
-var utility = require('../utility')
+import utility from '../utility'
 export default {
   name: 'Main',
   data: function () {
@@ -28,18 +28,15 @@ export default {
   methods: {
     getSwiperList: function () {
       var that = this
-      utility.getData('http://localhost/data/get-swiper-list.php', function (data) {
+      utility.getData('static/data/get-swiper-list.php', function (data) {
         // console.log(data)
         that.list = data
+      }, function (err) {
+        console.log(err)
       })
     }
   }
 }
 </script>
-<style scoped>
- #index{
-   padding-bottom: 1rem;
- }
-</style>
 
 

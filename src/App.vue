@@ -3,7 +3,7 @@
     <!-- <img src="./assets/logo.png"> -->
     <transition :name='transition'>
       <keep-alive include='Main'>
-        <router-view :showMusicBar='showMusicBar'/>
+        <router-view :showMusicBar='showMusicBar' class='Router'/>
       </keep-alive>
     </transition>
     <music-bar :data='data' v-if="mIsLoaded"/>
@@ -17,7 +17,8 @@ export default {
   data: function () {
     return {
       mIsLoaded: false,
-      data: {}
+      data: {},
+      transition: 'slide-right'
     }
   },
   components: {
@@ -34,7 +35,9 @@ export default {
     '$route' (to, from) {
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
+      // console.log(toDepth + ' ' + fromDepth)
       this.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+      console.log(this.transition)
     }
   }
 }
@@ -50,7 +53,7 @@ export default {
   background: #fff;
   margin: 0;
   position: relative;
-  padding-bottom: 5rem;
+
 }
 body{
   margin: 0;
@@ -64,13 +67,26 @@ p,h2,h3,h4,h5,h6{
 a{
   text-decoration: none;
 }
-
-.slide-right-enter{
- left: 100%;
-}
-
 img{
   width: 100%;
-  /* height: 25vw; */
+}
+
+.Router {
+     position: absolute;
+     width: 100%;
+     transition: all .8s ease;
+     padding-bottom: 6rem;
+}
+.slide-left-enter,
+ .slide-right-leave-active {
+    /* opacity: 0; */
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+.slide-left-leave-active,
+.slide-right-enter {
+    /* opacity: 0; */
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100% 0);
 }
 </style>
